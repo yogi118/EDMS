@@ -44,7 +44,7 @@ public class EDMSApiSteps {
 	
 	@Then("Mulesoft should API shoul up and body should repsond with {string} message")
 	public void mulesoft_should_API_shoul_up_and_body_should_repsond_with_message(String message) {
-		assertEquals("some issue", message, APIUtil.response.extract().htmlPath().getString("html.body"));
+		assertEquals("Mulesoft application is not up", message, APIUtil.response.extract().htmlPath().getString("html.body"));
 	}
 	
 	
