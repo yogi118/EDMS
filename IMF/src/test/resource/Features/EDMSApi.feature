@@ -13,7 +13,7 @@ Feature: Verify the EDMS API response
       | http://dedmsapi.centralus.cloudapp.azure.com:8083/heartbeat |
 
   @mlalgorithm @article4 @api
-  Scenario Outline: As an end user, I want to consume generate edms sore  for pdf file type
+  Scenario Outline: As an end user, I want to generate edms sore  for pdf file type
     Given I have "<base_uri>" and "<base_path>" for EDMS
     When I want to get EDMS score for "<fileName>" file and "<transaction_ID>" transcation along with "<control_type>" control type
     Then I should get valid response

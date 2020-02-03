@@ -86,7 +86,22 @@
 					<sourceJsonReportDirectory>${project.build.directory}/cucumber-report</sourceJsonReportDirectory>
 					<generatedHtmlReportDirectory>${project.build.directory}/generated-report</generatedHtmlReportDirectory>
 					<customPageTitle>Regression Suite</customPageTitle>
+					<expandBeforeAfterHooks>true</expandBeforeAfterHooks>
+					<expandStepHooks>true</expandStepHooks>
+					<expandDocStrings>true</expandDocStrings>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 		</plugins>
