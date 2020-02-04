@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import commonUtils.APIUtil;
+import commonUtils.CUtil;
 import io.cucumber.datatable.DataTable;
 
 public class EDMSApi {
@@ -21,6 +22,16 @@ public class EDMSApi {
 		Map<String, String> headers = new HashMap<String,String>();
 		headers.put("trans_id", trans_Id);
 		headers.put("file_name", fileName);
+		String filePath = String.join(File.separator, System.getProperty("user.dir"), "src", "test", "resource",
+				"PDF_Files",fileName);
+		File pdfFile = new File(filePath);
+		APIUtil.post(headers, controType, pdfFile);
+	}
+	
+	public void uploadFile(String fileName, String trans_Id, String controType) {
+		Map<String, String> headers = new HashMap<String,String>();
+		headers.put("trans_id", trans_Id);
+		headers.put("file_name", CUtil.randomStringGenerator() + fileName);
 		String filePath = String.join(File.separator, System.getProperty("user.dir"), "src", "test", "resource",
 				"PDF_Files",fileName);
 		File pdfFile = new File(filePath);
@@ -43,5 +54,11 @@ public class EDMSApi {
 	
 	public void doGet(String url) {
 		APIUtil.get(url);
+	}
+	
+	public String getFileUploadId() {
+		String id = APIUtil.response.extract().path("id").toString();
+		System.out.println("ID: " + id);
+		return id;
 	}
 }

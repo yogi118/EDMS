@@ -52,7 +52,7 @@
 							<argLine>-Dfile.encoding=UTF-8</argLine>
 							<useFile>false</useFile>
 							<includes>
-								<include>**/*_AT.class</include>
+								<include>**/*.class</include>
 							</includes>
 							<testFailureIgnore>true</testFailureIgnore>
 							<systemPropertyVariables>
@@ -86,9 +86,6 @@
 					<sourceJsonReportDirectory>${project.build.directory}/cucumber-report</sourceJsonReportDirectory>
 					<generatedHtmlReportDirectory>${project.build.directory}/generated-report</generatedHtmlReportDirectory>
 					<customPageTitle>Regression Suite</customPageTitle>
-					<expandBeforeAfterHooks>true</expandBeforeAfterHooks>
-					<expandStepHooks>true</expandStepHooks>
-					<expandDocStrings>true</expandDocStrings>
 				</configuration>
 			</plugin>
 			<plugin>

@@ -12,7 +12,7 @@ Feature: Verify the EDMS API response
       | url                                                         |
       | http://dedmsapi.centralus.cloudapp.azure.com:8083/heartbeat |
 
-  @mlalgorithm @article4 @api
+  @article4 @api
   Scenario Outline: As an end user, I want to generate edms sore  for pdf file type
     Given I have "<base_uri>" and "<base_path>" for EDMS
     When I want to get EDMS score for "<fileName>" file and "<transaction_ID>" transcation along with "<control_type>" control type
@@ -24,4 +24,14 @@ Feature: Verify the EDMS API response
 
     Examples: 
       | base_uri                   | base_path               | fileName                   | transaction_ID | control_type |
-      | http://40.77.103.9:8089/ml | classify_documents_form | article_4_1CANEA201900.pdf |            123 | article			|
+      | http://40.77.103.9:8089/ml | classify_documents_form | article_4_1CANEA201900.pdf |            123 | article      |
+
+  @fileupload @api
+  Scenario Outline: As an end user, I want to upload a pdf file in EDMS system
+    Given I have "<base_uri>" and "<base_path>" for EDMS
+    When I want to upload "<fileName>" file for "<transaction_ID>" transcation along with "<control_type>" control type
+    Then I should get valid response
+    And File should successfully uploaded in the EDMS system
+    Examples: 
+      | base_uri                   												| base_path | fileName             | transaction_ID | control_type |
+      | http://dedmsapi.centralus.cloudapp.azure.com:8083 | lti-imf   | article_8_052606.pdf |  210           | article      |

@@ -1,9 +1,7 @@
 package stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
+import static org.junit.Assert.assertTrue;
 
 import apiActions.EDMSApi;
 import commonUtils.APIUtil;
@@ -51,5 +49,16 @@ public class EDMSApiSteps {
 	@When("I want to get EDMS score for {string} file and {string} transcation along with {string} control type")
 	public void i_want_to_get_EDMS_score_for_file_and_transcation_along_with_control_type(String fileName, String trans_Id, String controType) {
 		edmsAPI.generateEdmsScroe(fileName, trans_Id, controType);
+	}
+	
+	@When("I want to upload {string} file for {string} transcation along with {string} control type")
+	public void i_want_to_upload_file_for_transcation_along_with_control_type(String fileName, String trans_Id, String controType) {
+	    edmsAPI.uploadFile(fileName, trans_Id, controType);
+	}
+	
+	@Then("File should successfully uploaded in the EDMS system")
+	public void file_should_successfully_uploaded_in_the_EDMS_system() {
+	    String fileUploadId = edmsAPI.getFileUploadId();
+	    assertTrue("File is not uploaded successfully", !fileUploadId.isEmpty());
 	}
 }
