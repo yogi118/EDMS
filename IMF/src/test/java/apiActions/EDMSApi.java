@@ -23,7 +23,6 @@ public class EDMSApi {
 		headers.put("file_name", fileName);
 		String filePath = String.join(File.separator, System.getProperty("user.dir"), "src", "test", "resource",
 				"PDF_Files",fileName);
-		System.out.println(filePath);
 		File pdfFile = new File(filePath);
 		APIUtil.post(headers, controType, pdfFile);
 	}
